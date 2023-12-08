@@ -186,6 +186,45 @@ input[type="text"] {
     border-color: #0056b3;
 }
 
+.upload-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Styling for the green checkbox */
+#uploadCheckbox {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: gray;
+    border-radius: 3px;
+    margin-left: 5px;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    font-size: 14px;
+    margin-right: 15px;
+  }
+
+  section {
+    width: 300px;
+    padding: 20px;
+    margin-top: 25px;
+    border: 1px solid #23242e;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #23242e;
+    color: #f1f1f1;
+}
+
+contactInformation {
+    color: white;
+}
+
+
 /* footer {
     background-color: #333;
     color: #fff;

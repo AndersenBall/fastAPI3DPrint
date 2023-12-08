@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <link rel="stylesheet" href="/static/styles/userRegistrationStyles.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <img src="/static/images/logo.png" class="logo">
+            <nav class="bold-text">
+                <ul>
+                    <li><a href="/shop">Shop</a></li>
+                    <li><a href="/upload">Upload</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/userRegistration">Register</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="upload-container">    
+
+            <h2 style="color: #f1f1f1;">Please upload both files.</h2>
+            
+            <form action="/submit" method="post">
+
+                <label style="margin-bottom: 10px; padding: 8px;">Upload Image</label>
+                <input type="file" id="fileInput" accept="image/*" required>
+                <img id="previewImage" style="max-width: 100%; margin-top: 10px; display: none;">
+                <!-- <span> and </span> -->
+                <label style="margin-bottom: 10px; padding: 8px; padding-top: 25px;"> Upload STL File</label>
+                <input type="file" id="fileInput" name="fileInput" accept=".STL" required>
+        
+                <span id="uploadCheckbox">✔️</span>
+
+                <!-- Submit Button -->
+                <button type="submit" style="margin-top: 25px;">Submit</button>
+            </form>
+        </div>
+        
+        <!-- Three Columns -->
+        <!-- <div class="row">
+            <div class="col">
+                <h2>Upload</h2>
+                <p>Please upload an image and STL file.</p> -->
+                <!-- Button with Image Upload -->
+                <!-- <button id="uploadBtn" class="btn">Upload Image</button>
+                <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                <img id="previewImage" style="max-width: 100%; margin-top: 10px; display: none;">
+                <span> and </span>
+                <button id="uploadBtn" class="btn">Upload Image</button>
+                <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                <img id="previewImage" style="max-width: 100%; margin-top: 10px; display: none;">
+                <div class="submitBtn">
+                    <button id="submit" class="btn">Submit</button>
+                </div>
+            </div>
+
+
+            </div>
+        </div> -->
+    <!-- </div> -->
+        
+
+    </div>
+
+    <main>
+        <!-- Your main content goes here -->
+    </main>
+
+    <footer>
+        <!-- Your footer content goes here -->
+    </footer>
+
+    <script src="/static/scripts/script.js"></script>
+</body>
+</html>

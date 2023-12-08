@@ -38,6 +38,11 @@ async def read_root(request: Request):
     # Render the specified HTML file using Jinja2Templates
     return templates.TemplateResponse("shop.html", {"request": request})
 
+@app.get("/upload", response_class=HTMLResponse)
+async def read_root(request: Request):
+    # Render the specified HTML file using Jinja2Templates
+    return templates.TemplateResponse("upload.html", {"request": request})
+
 @app.get("/login", response_class=HTMLResponse)
 async def read_root(request: Request):
     # Render the specified HTML file using Jinja2Templates
@@ -52,6 +57,11 @@ async def read_root(request: Request):
 async def read_root(request: Request):
     # Render the specified HTML file using Jinja2Templates
     return templates.TemplateResponse("checkout.html", {"request": request})
+
+@app.get("/contact", response_class=HTMLResponse)
+async def read_root(request: Request):
+    # Render the specified HTML file using Jinja2Templates
+    return templates.TemplateResponse("contact.html", {"request": request})
 
 orders = []
 users = []
