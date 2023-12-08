@@ -1,3 +1,5 @@
+
+
 const createUser = async (form,event) => {
     event.preventDefault();
 
@@ -59,6 +61,7 @@ const login = async (form,event) => {
             const errorData = await response.json();
             window.alert(`${errorData.detail}`);
         } else {
+            localStorage.setItem("username",form.elements.username.value);
             window.alert('Login Successful.');
             form.reset()
         }
@@ -66,4 +69,11 @@ const login = async (form,event) => {
         window.alert(error.message);
     }
     return false;
+};
+
+const addToCart = async (form,event) => {
+    event.preventDefault();
+
+    window.alert("we did it");
+    return true;
 };
