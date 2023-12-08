@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="styles/style.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <img src="images/logo.png" class="logo">
+            <nav class="bold-text">
+                <ul>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="index.html">Upload</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="userRegistration.html">Register</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h1 class="custom-heading">3D Printing</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                    tempor incididunt ut labore et dolore magna aliqua. Posuere sollicitudin 
+                    aliquam ultrices sagittis orci a. Leo integer malesuada nunc vel risus commodo 
+                    viverra. Ultrices sagittis orci a scelerisque purus semper eget duis at.</p>
+            </div>
+        </div>
+        
+        <!-- Three Columns -->
+        <div class="row">
+            <div class="col">
+                <h2>Parts to Add</h2>
+                <p>Upload an image of the object you want 3D printed or submit a URL.</p>
+                <!-- Button with Image Upload -->
+                <button id="uploadBtn" class="btn">Upload Image</button>
+                <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                <img id="previewImage" style="max-width: 100%; margin-top: 10px; display: none;">
+                <span> or </span>
+                <input type="text" id="urlInput" class="url-input" placeholder="Paste URL here">
+            </div>
+            <div class="col">
+                <h2>Configure & Add Parts</h2>
+                <p>Choose the technology you would prefer to be used.</p>
+                <div class="form-group">
+                    <label for="dropdown">Technology</label>
+                    <select id="dropdown">
+                        <option value="option1">Fused Filament Fabrication (FFF)</option>
+                        <option value="option2">Stereolithography (SLA) </option>
+                    </select>
+                    <br>
+                    <label for="dropdown">Infill</label>
+                    <select id="dropdown">
+                        <option value="option1">100%</option>
+                        <option value="option2">50%</option>
+                        <option value="option3">30%</option>
+                        <option value="option4">20%</option>
+                        <option value="option5">10%</option>
+                        <option value="option6">5%</option>
+                        <option value="option7">2.5%</option>
+                        <option value="option8">0% (Hollow Object)</option>
+                    </select>
+                    <br>
+                    <label for="dropdown">Layer Thickness</label>
+                    <select id="dropdown">
+                        <option value="option1">0.1 mm</option>
+                        <option value="option2">0.3 mm</option>
+                        <option value="option3">>0.2 mm</option>
+                    </select>
+                    <br>
+                    <label for="dropdown">Material</label>
+                    <select id="dropdown">
+                        <option value="option1">PLA, Opaque, White</option>
+                        <option value="option2">PLA, Opaque, Grey</option>
+                        <option value="option3">PLA, Opaque, Black</option>
+                        <option value="option4">PLA, Opaque, Red</option>
+                        <option value="option5">PLA, Opaque, Orange</option>
+                        <option value="option6">PLA, Opaque, Yellow</option>
+                        <option value="option7">PLA, Opaque, Green</option>
+                        <option value="option8">PLA, Opaque, Blue</option>
+                        <option value="option9">PLA, Opaque, Purple</option>
+                        <option value="option10">PLA, Translucent, Clear</option>
+                        <option value="option11">ABS, Opaque, White</option>
+                        <option value="option12">ABS, Opaque, Gray</option>
+                        <option value="option13">ABS, Opaque, Black</option>
+                        <option value="option14">ABS, Opaque, Red</option>
+                        <option value="option15">ABS, Opaque, Orange</option>
+                        <option value="option16">ABS, Opaque, Yellow</option>
+                        <option value="option17">ABS, Opaque, Green</option>
+                        <option value="option18">ABS, Opaque, Blue</option>
+                        <option value="option19">ABS, Opaque, Purple</option>
+                    </select>
+
+                    <div class="quantity-container">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" value="1">
+                        <button id="addToCartBtn" class="btn">Add to Cart</button>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col">
+                <h2>Review & Checkout</h2>
+                <p>Review carefully before checking out.</p>
+                <!-- Inside your HTML, possibly within a form or another container -->
+                <!-- Inside your HTML, possibly within a form or another container -->
+                <div class="checkout-container">
+                    <div class="checkout-row">
+                        <label for="item1">Subtotal</label>
+                        <input type="text" id="item1" name="item1"  readonly value="$0.00">
+                    </div>
+
+                    <div class="checkout-row">
+                        <label for="item2">Printing Setup:</label>
+                        <input type="text" id="item2" name="item2"  readonly value="$0.00">
+                    </div>
+
+                    <div class="checkout-row">
+                        <label for="item3">Shipping</label>
+                        <input type="text" id="item3" name="item3"  readonly value="$0.00">
+                    </div>
+
+                    <div class="checkout-row total-row">
+                        <label for="total">Total:</label>
+                        <input type="text" id="total" name="total" readonly value="$0.00">
+                    </div>
+
+                    <div class="checkout-button">
+                        <button id="checkoutBtn" class="btn">Checkout</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+        
+
+    </div>
+
+    <main>
+        <!-- Your main content goes here -->
+    </main>
+
+    <footer>
+        <!-- Your footer content goes here -->
+    </footer>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>

@@ -1,15 +1,14 @@
-
 from app.stlsManager import CalculateCost, FindStlFilePath
 
 class Address:
-    def __init__(self,streetaddress:str,town:str,postal:int):
-        self.streetAddress = streetaddress
-        self.town = town
+    def __init__(self,streetAddress:str,city:str,state:str,postal:int):
+        self.streetAddress = streetAddress
+        self.city = city
+        self.state = state
         self.postalcode = postal
     
     def __str__(self):
         return str({"streetAddress":self.streetAddress,"town": self.town ,"postal":self.postalcode})
-    
 
 
 class Payment:
