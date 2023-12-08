@@ -70,10 +70,30 @@ const login = async (form,event) => {
     }
     return false;
 };
-
-const addToCart = async (form,event) => {
+//also need to pass in the name of the stl file. 
+const addToCart = async (form, event, technology, infill, layerThickness, material, quantity) => {
     event.preventDefault();
 
-    window.alert("we did it");
+    // Access the values passed as parameters
+    const message = `Technology: ${technology}\nInfill: ${infill}\nLayer Thickness: ${layerThickness}\nMaterial: ${material}\nQuantity: ${quantity}`;
+
+    //call backend api with these fields. It returns a price. Take price display it on subtotal. We will have shipping and setup be constant.
+
+    window.alert(message);
+
+    return true;
+};
+
+
+//pass in payment info
+const confirmPayment = async (form, event) => {
+    event.preventDefault();
+
+    // Access the values passed as parameters
+    const message = `Technology: ${technology}\nInfill: ${infill}\nLayer Thickness: ${layerThickness}\nMaterial: ${material}\nQuantity: ${quantity}`;
+
+    //call function to actually make payment 
+    window.alert(message);
+
     return true;
 };
