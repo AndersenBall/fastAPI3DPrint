@@ -28,7 +28,7 @@
 
     <h2 style="color: #f1f1f1;">Register</h2>
     
-    <form action="/userAuthent/newUser" method="post">
+    <form onsubmit="return createUser(this,event)">
 
         <!-- Full Name -->
         <label for="fullName">Full Name:</label>
@@ -76,7 +76,7 @@
     </form>
 </div>
 
-    <!-- <script src="/static/scripts/script.js"></script> -->
+    <script src="/static/scripts/script.js"></script>
 
 </body>
 </html>

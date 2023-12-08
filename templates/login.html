@@ -28,7 +28,7 @@
 
     <h2 style="color: #f1f1f1;">Login</h2>
     
-    <form action="/login" method="post">
+    <form onsubmit="return login(this,event)">
 
         <!-- Username -->
         <label for="username">Username:</label>
@@ -46,6 +46,8 @@
         <button type="submit">Login</button>
     </form>
 </div>
+
+    <script src="/static/scripts/script.js"></script>
 
 </body>
 </html>

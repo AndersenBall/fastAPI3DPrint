@@ -63,16 +63,16 @@ def read_root():
 
 @app.post("/userAuthent/newUser")
 def new_user(
-    fullName: str = Form(...),
-    fullAddress: str = Form(...),
-    username: str = Form(...),
-    password: str = Form(...),
-    email: str = Form(...),
-    phoneNumber: str = Form(...),
+    fullName: str = Body(...),
+    fullAddress: str = Body(...),
+    username: str = Body(...),
+    password: str = Body(...),
+    email: str = Body(...),
+    phoneNumber: str = Body(...),
 ):
     try:
         if User.find_user_by_id(users,username) is not None:
-            raise HTTPException(status_code=409, detail='User already exists')
+            raise HTTPException(status_code=409, detail='User Exists. Please use a different username.')
         
         newUser = User(fullName, fullAddress, username, password, email, phoneNumber)
         users.append(newUser)
@@ -83,6 +83,23 @@ def new_user(
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.post("/userAuthent/login")
+def loginInfo(
+    username: str = Body(...),
+    password: str = Body(...),
+):
+    try:
+        #look for user and password match
+        authenticated = User.login(users, username, password)
+        if authenticated == False:
+            raise HTTPException(status_code=409, detail='Login failed. The username and password combination do not exist in our system.')
+        else:
+            return True
+    except HTTPException as e:
+        raise e
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
 @app.get("/userAuthent/allUsers")
 def read_all_Users():
     return {"users": [str(user) for user in users]}
@@ -109,8 +126,7 @@ def new_order(
         return {"Hello": str(orders[-1])}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-
+    
 @app.get("/checkout/allorders")
 def read_all_orders():
     return {"orders": [str(order) for order in orders]}

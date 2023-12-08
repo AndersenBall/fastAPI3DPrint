@@ -22,3 +22,10 @@ class User:
             if user.userID == target_user_id:
                 return user
         return None
+    
+    def login(cls, target_user_id, target_user_password):
+        for index, user in enumerate(cls):
+            if user.userID == target_user_id:
+                if user.password == target_user_password:
+                    return True
+        return False
