@@ -23,14 +23,34 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 app = FastAPI()
 
 # Front End Files
-app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 # Configure templates
-templates = Jinja2Templates(directory="frontend")
+templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
     # Render the specified HTML file using Jinja2Templates
     return templates.TemplateResponse("login.html", {"request": request})
+
+@app.get("/shop", response_class=HTMLResponse)
+async def read_root(request: Request):
+    # Render the specified HTML file using Jinja2Templates
+    return templates.TemplateResponse("shop.html", {"request": request})
+
+@app.get("/login", response_class=HTMLResponse)
+async def read_root(request: Request):
+    # Render the specified HTML file using Jinja2Templates
+    return templates.TemplateResponse("login.html", {"request": request})
+                                                     
+@app.get("/userRegistration", response_class=HTMLResponse)
+async def read_root(request: Request):
+    # Render the specified HTML file using Jinja2Templates
+    return templates.TemplateResponse("userRegistration.html", {"request": request})
+
+@app.get("/checkout", response_class=HTMLResponse)
+async def read_root(request: Request):
+    # Render the specified HTML file using Jinja2Templates
+    return templates.TemplateResponse("checkout.html", {"request": request})
 
 orders = []
 users = []
