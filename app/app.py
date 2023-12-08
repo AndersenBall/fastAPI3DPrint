@@ -2,6 +2,7 @@
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi import FastAPI, Form
 from app.orderManager import *
 from app.stlsManager import *
 from app.userManager import *
@@ -62,12 +63,12 @@ def read_root():
 
 @app.post("/userAuthent/newUser")
 def new_user(
-    fullName: str = Body(...),
-    fullAddress: str = Body(...),
-    username: str = Body(...),
-    password: str = Body(...),
-    email: str = Body(...),
-    phoneNumber: str = Body(...),
+    fullName: str = Form(...),
+    fullAddress: str = Form(...),
+    username: str = Form(...),
+    password: str = Form(...),
+    email: str = Form(...),
+    phoneNumber: str = Form(...),
 ):
     try:
         if User.find_user_by_id(users,username) is not None:

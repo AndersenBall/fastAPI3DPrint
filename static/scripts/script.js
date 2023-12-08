@@ -31,4 +31,3 @@ const createUser = async () => {
         window.alert(`Error: ${error.message}`);
     }
 };
-createUser();
