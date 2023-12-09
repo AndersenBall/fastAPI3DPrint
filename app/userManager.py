@@ -23,6 +23,7 @@ class User:
                 return user
         return None
     
+    @staticmethod
     def login(cls, target_user_id, target_user_password):
         for index, user in enumerate(cls):
             if user.userID == target_user_id:

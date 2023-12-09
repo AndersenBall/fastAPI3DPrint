@@ -123,15 +123,17 @@ def getUserId(userid:str):
 
 @app.post("/checkout/newOrder")
 def new_order(
-    street: str = Body(...),
-    town: str = Body(...),
-    postal: int = Body(...),
+    fullAddress: str = Body(...),
     modelName: str = Body(...),
+    tech: str = Body(...),
+    infil: str = Body(...),
+    layerthick: str = Body(...),
+    material: str = Body(...),
     userName: str = Body(...),
 ):
     try:
         #TODO add code to connect this directly to a user and check that a user exists
-        neworder = Order(Address(street, town, postal), modelName, userName)
+        neworder = Order(fullAddress, STLObject(modelName,tech,infil,layerthick,material), userName)
         orders.append(neworder)
         return {"Hello": str(orders[-1])}
     except Exception as e:
