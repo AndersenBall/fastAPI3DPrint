@@ -30,3 +30,10 @@ class User:
                 if user.password == target_user_password:
                     return True
         return False
+    
+    @staticmethod
+    def getUserAddress(cls, target_user_id):
+        for index, user in enumerate(cls):
+            if user.userID == target_user_id:
+                    return user.address
+        return 'N/A'

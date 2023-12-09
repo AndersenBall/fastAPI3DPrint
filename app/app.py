@@ -123,7 +123,6 @@ def getUserId(userid:str):
 
 @app.post("/checkout/newOrder")
 def new_order(
-    fullAddress: str = Body(...),
     modelName: str = Body(...),
     tech: str = Body(...),
     infil: str = Body(...),
@@ -133,7 +132,8 @@ def new_order(
 ):
     try:
         #TODO add code to connect this directly to a user and check that a user exists
-        neworder = Order(fullAddress, STLObject(modelName,tech,infil,layerthick,material), userName)
+        fullAddress = User.getUserAddress(users, userName)
+        neworder = createOrder(fullAddress, STLObject(modelName,tech,infil,layerthick,material), userName)
         orders.append(neworder)
         return {"Hello": str(orders[-1])}
     except Exception as e:
@@ -161,8 +161,9 @@ async def create_upload_file(file: UploadFile = File(...)):
 
 
 @app.get("/calcfileCost/{filename}")
-async def calcfileCost(filename: str):
+async def calcfileCost(filename):
     try:
+        FindStlFilePath
         return Calc_Cost(filename)
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="File not found")

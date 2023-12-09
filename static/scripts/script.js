@@ -1,5 +1,3 @@
-
-
 const createUser = async (form,event) => {
     event.preventDefault();
 
@@ -61,7 +59,8 @@ const login = async (form,event) => {
             const errorData = await response.json();
             window.alert(`${errorData.detail}`);
         } else {
-            localStorage.setItem("username",form.elements.username.value);
+            const errorData = await response.json();
+            sessionStorage.setItem("username", form.elements.username.value)
             window.alert('Login Successful.');
             form.reset()
         }
@@ -70,19 +69,89 @@ const login = async (form,event) => {
     }
     return false;
 };
-//also need to pass in the name of the stl file. 
-const addToCart = async (form, event, technology, infill, layerThickness, material, quantity) => {
+
+const uploadSTL = async (form, event) => {
     event.preventDefault();
 
-    // Access the values passed as parameters
-    const message = `Technology: ${technology}\nInfill: ${infill}\nLayer Thickness: ${layerThickness}\nMaterial: ${material}\nQuantity: ${quantity}`;
+    const apiUrl = 'http://127.0.0.1:8000/uploadfile'; 
 
-    //call backend api with these fields. It returns a price. Take price display it on subtotal. We will have shipping and setup be constant.
+    const formData = new FormData();
+    formData.append('file', form.elements.fileInput.files[0])
 
-    window.alert(message);
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            body: formData,
+        });
 
-    return true;
+        if (!response.ok) {
+            // Handle non 2xx responses
+            const errorData = await response.json();
+            window.alert(`Failed to Upload Image. Try again.`);
+        } else {
+            const responseData = await response.json();
+            sessionStorage.setItem("stlFile", form.elements.fileInput.files[0].name)
+            window.alert('File Uploaded: ' + sessionStorage.getItem("stlFile"));
+        }
+    } catch (error) {
+        window.alert(error.message);
+    }
+    return false;
 };
+
+//also need to pass in the name of the stl file. 
+const addToCart = async() => {
+    //Get values from dropdowns
+    const apiUrl = 'http://127.0.0.1:8000/checkout/newOrder';
+    const checkoutData = {
+        modelName: sessionStorage.getItem("stlFile"),
+        tech: document.getElementById("technology").value,
+        infil: document.getElementById("infill").value,
+        layerthick: document.getElementById("layerThickness").value,
+        material: document.getElementById("material").value,
+        userName: sessionStorage.getItem("username"),
+    };
+
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(checkoutData),
+        });
+
+        if (!response.ok) {
+            // Handle non 2xx responses
+            const errorData = await response.json();
+            window.alert(`${errorData.detail}`);
+        } else {
+            getFileCost();
+            window.alert('Successfully Added to Cart');
+        }
+    } catch (error) {
+        window.alert(error.message);
+    }
+};
+
+async function getFileCost(filename) {
+    const apiUrl = `https://your-api-domain.com/calcfileCost/${filename}`;
+
+    try {
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+            throw new Error(`Error - Status: ${response.status}`);
+        }
+        else
+            costData = await response.json();
+            cost = JSON.parse(costData).cost;
+            document.getElementById("subtotal").testContent = string('$' + cost);
+    } catch (error) {
+        console.error('Error fetching file cost:', error.message);
+        return null;
+    }
+}
 
 
 //pass in payment info
@@ -97,3 +166,4 @@ const confirmPayment = async (form, event) => {
 
     return true;
 };
+

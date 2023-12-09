@@ -40,8 +40,6 @@ class STLObject:
             f"  Material: {self.material}"
         )
 
-
-
 def Upload_File(file: UploadFile = File(...)):
     file_path = os.path.join(UPLOAD_DIR, file.filename)
     with open(file_path, "wb") as f:
