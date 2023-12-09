@@ -61,8 +61,7 @@ def Calc_Cost(stlObj: STLObject):
             returnvalue = returnvalue*1.1
         returnvalue = returnvalue * (stlObj.Infil +.1)
         returnvalue = returnvalue * (.9 + (stlObj.layerThickness))
-        if returnvalue > 100:
-            returnvalue = returnvalue /10
+        
     except Exception as e:
         raise HTTPException(status_code=400,detail="error calc price")
     return {"filename": stlObj.filename, "content": returnvalue}
